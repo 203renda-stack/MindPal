@@ -1,0 +1,7 @@
+{
+  "name": "MindPal - Empathic AI Companion",
+  "description": "A warm, anonymous mental health companion offering empathetic CBT-based support, mood tracking, and crisis resources. Not a medical substitute.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
