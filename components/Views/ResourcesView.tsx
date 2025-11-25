@@ -15,7 +15,7 @@ export const ResourcesView: React.FC = () => {
         {RESOURCES.map((res) => (
           <div 
             key={res.id} 
-            className="group bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-start gap-4 transition-all hover:shadow-md hover:border-teal-100"
+            className="group bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-start gap-4 transition-all hover:shadow-md hover:border-teal-100 relative"
           >
             <div className={`p-3 rounded-2xl shrink-0 transition-colors
               ${res.category === 'hotline' ? 'bg-rose-50 text-rose-500 group-hover:bg-rose-100' : 
@@ -25,7 +25,7 @@ export const ResourcesView: React.FC = () => {
               {res.category === 'article' && <BookOpen size={24} />}
             </div>
             
-            <div className="flex-1 flex flex-col h-full justify-between">
+            <div className="flex-1 flex flex-col h-full justify-between pb-8 md:pb-0">
               <div>
                 <h3 className="font-bold text-slate-800 text-lg">{res.title}</h3>
                 <p className="text-sm text-slate-500 mt-1 leading-relaxed">{res.description}</p>
@@ -36,11 +36,13 @@ export const ResourcesView: React.FC = () => {
                   href={res.link} 
                   target={res.link.startsWith('tel') ? '_self' : '_blank'}
                   rel="noopener noreferrer"
-                  className={`inline-flex items-center gap-1 mt-4 text-sm font-bold uppercase tracking-wide transition-colors
+                  className={`absolute bottom-5 right-5 md:static md:mt-4 inline-flex items-center gap-1 text-sm font-bold uppercase tracking-wide transition-colors
                     ${res.category === 'hotline' ? 'text-rose-500 hover:text-rose-600' : 'text-teal-600 hover:text-teal-700'}`}
                 >
                   {res.category === 'hotline' ? '立即拨打' : '查看详情'}
                   <ExternalLink size={14} />
+                  {/* Invisible overlay for better mobile touch target */}
+                  <span className="absolute inset-0 md:hidden" aria-hidden="true"></span>
                 </a>
               ) : (
                 <span className="mt-4 text-xs text-slate-400 font-medium bg-slate-100 self-start px-2 py-1 rounded">

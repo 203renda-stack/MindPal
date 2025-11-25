@@ -31,20 +31,23 @@ export const RESOURCES: Resource[] = [
   {
     id: '2',
     title: '5分钟正念冥想',
-    description: '快速缓解焦虑，回归当下平静。',
-    category: 'meditation'
+    description: '快速缓解焦虑，回归当下平静（网易云音乐）。',
+    category: 'meditation',
+    link: 'https://music.163.com/#/search/m/?s=%E6%AD%A3%E5%BF%B5%E5%86%A5%E6%83%B3&type=1'
   },
   {
     id: '3',
-    title: '认识CBT疗法',
-    description: '了解认知行为疗法如何帮助你管理情绪。',
-    category: 'article'
+    title: '认识 CBT 疗法',
+    description: '了解认知行为疗法如何帮助你管理情绪（知乎专栏）。',
+    category: 'article',
+    link: 'https://www.zhihu.com/search?type=content&q=CBT%E8%AE%A4%E7%9F%A5%E8%A1%8C%E4%B8%BA%E7%96%97%E6%B3%95'
   },
   {
     id: '4',
-    title: '深呼吸练习',
-    description: '跟着节奏呼吸，降低心率。',
-    category: 'meditation'
+    title: '深呼吸练习引导',
+    description: '跟着节奏呼吸，降低心率（Bilibili视频）。',
+    category: 'meditation',
+    link: 'https://search.bilibili.com/all?keyword=%E6%B7%B1%E5%91%BC%E5%90%B8%E7%BB%83%E4%B9%A0'
   }
 ];
 

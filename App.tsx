@@ -125,10 +125,10 @@ function App() {
       const now = new Date();
       const currentHM = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
       
+      // Check if time matches and seconds are low to avoid double trigger
       if (currentHM === settings.reminderTime && now.getSeconds() < 2) {
-         // Simple browser notification check
          if (Notification.permission === 'granted') {
-           new Notification("MindPal 每日提醒", { body: "今天过得怎么样？来聊聊吧！🌿" });
+           new Notification("MindPal 每日提醒", { body: "今天过得怎么样？来聊聊吧！🌿", icon: '/favicon.ico' });
          } else if (Notification.permission !== 'denied') {
            Notification.requestPermission();
          }
