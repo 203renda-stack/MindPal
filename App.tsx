@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { initializeChat, sendMessageToGemini, analyzeMoodFromHistory } from './services/geminiService';
 import { Message, AppView, MoodEntry, DailyStats, UserSettings } from './types';
@@ -70,6 +69,7 @@ function App() {
   // Refs
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
+  // Use 'number' explicitly for browser environments
   const timerRef = useRef<number | null>(null);
 
   // --- Effects ---
@@ -113,7 +113,10 @@ function App() {
     }
 
     return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
+      if (timerRef.current !== null) {
+        window.clearInterval(timerRef.current);
+        timerRef.current = null;
+      }
     };
   }, [currentView]);
 
@@ -121,7 +124,7 @@ function App() {
   useEffect(() => {
     if (!settings.reminderEnabled) return;
 
-    const interval = setInterval(() => {
+    const interval = window.setInterval(() => {
       const now = new Date();
       const currentHM = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
       
@@ -135,7 +138,7 @@ function App() {
       }
     }, 1000);
 
-    return () => clearInterval(interval);
+    return () => window.clearInterval(interval);
   }, [settings.reminderEnabled, settings.reminderTime]);
 
   // Auto-scroll chat
